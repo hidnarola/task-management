@@ -54,6 +54,7 @@ class Login extends CI_Controller {
 		if ($this->form_validation->run() == TRUE) {
 			$email = $this->input->post('email');
 			$user_detail = $this->login_model->get_user($email);
+			$user_detail['resent_password_link'] = base_url()."admin/reset-password/";
 			if(!empty($user_detail)){
 				$config['protocol'] = 'smtp';
 				$config['smtp_host'] = 'ssl://smtp.gmail.com';
@@ -67,7 +68,8 @@ class Login extends CI_Controller {
 				$this->email->from('hda@narola.email', 'Task management');
 				$this->email->to($email);			
 				$this->email->subject('Forgot Password?');
-				$this->email->message('Testing the email class.');
+				$message = $this->load->view('admin/templetes/emails/forgot_password',$user_detail,true);
+				$this->email->message($message);
 				if($this->email->send()){
 					echo "Success!!";die;
 				}else{
@@ -77,6 +79,12 @@ class Login extends CI_Controller {
 		}	
 		$this->load->view('admin/templetes/login/header');
 		$this->load->view('admin/forgot_password');
+		$this->load->view('admin/templetes/login/footer');
+	}
+
+	public function reset_password(){
+		$this->load->view('admin/templetes/login/header');
+		$this->load->view('admin/reset_password');
 		$this->load->view('admin/templetes/login/footer');
 	}
 

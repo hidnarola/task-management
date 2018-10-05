@@ -297,7 +297,7 @@ $config['cache_path'] = '';
 
 /*
 |--------------------------------------------------------------------------
-| Cache Include Query String
+| Cache      Query String
 |--------------------------------------------------------------------------
 |
 | Whether to take the URL query string into consideration when generating
