@@ -14,6 +14,12 @@
                         <div class="icon-object border-slate-300 text-slate-300"><i class="icon-reading"></i></div>
                         <h5 class="content-group">Login to your account <small class="display-block">Enter your credentials below</small></h5>
                     </div>
+                    <?php if ($this->session->flashdata('success_msg')) { ?>
+					<div class="alert alert-success alert-styled-left alert-arrow-left alert-bordered">
+						<button type="button" class="close" data-dismiss="alert"><span>&times;</span><span class="sr-only">Close</span></button>
+						<?php echo $this->session->flashdata('success_msg'); ?>
+					</div>
+					<?php } ?>
                     <?php if ($this->session->flashdata('error_msg')) { ?>
 					<div class="alert alert-danger alert-styled-left">
 						<button type="button" class="close" data-dismiss="alert"><span>&times;</span><span class="sr-only">Close</span></button>

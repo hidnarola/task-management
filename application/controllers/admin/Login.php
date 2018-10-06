@@ -43,7 +43,8 @@ class Login extends CI_Controller {
 	            	}
 	            }
 			}
-			$this->load->view('admin/templetes/login/header');
+			$data['title'] = 'Login';
+			$this->load->view('admin/templetes/login/header',$data);
 			$this->load->view('admin/login');
 			$this->load->view('admin/templetes/login/footer');
 		}
@@ -54,7 +55,7 @@ class Login extends CI_Controller {
 		if ($this->form_validation->run() == TRUE) {
 			$email = $this->input->post('email');
 			$user_detail = $this->login_model->get_user($email);
-			$user_detail['resent_password_link'] = base_url()."admin/reset-password/";
+			$user_detail['resent_password_link'] = base_url()."admin/reset-password/".$user_detail['id'];
 			if(!empty($user_detail)){
 				$config['protocol'] = 'smtp';
 				$config['smtp_host'] = 'ssl://smtp.gmail.com';
@@ -76,14 +77,27 @@ class Login extends CI_Controller {
 					echo "failed!!";die;
 				}
 			}		
-		}	
-		$this->load->view('admin/templetes/login/header');
+		}
+		$data['title'] = "Forgot Password";
+		$this->load->view('admin/templetes/login/header',$data);
 		$this->load->view('admin/forgot_password');
 		$this->load->view('admin/templetes/login/footer');
 	}
 
 	public function reset_password(){
-		$this->load->view('admin/templetes/login/header');
+		$data['title'] = "Reset Password";
+		$this->form_validation->set_rules('new_password', 'Password', 'required');
+		$this->form_validation->set_rules('confirm_password', 'Password Confirmation', 'required');
+		if ($this->form_validation->run() == TRUE){
+			$user_id = $this->uri->segment('3');
+			$new_password = hash('sha256', $this->input->post('new_password'));
+			$result = $this->login_model->reset_password($user_id,$new_password);
+			if($result == 1){
+				$this->session->set_flashdata('success_msg', 'Password Reset Successfully Done!!');	            		
+				redirect('admin/login');
+			}
+		}
+		$this->load->view('admin/templetes/login/header', $data);
 		$this->load->view('admin/reset_password');
 		$this->load->view('admin/templetes/login/footer');
 	}

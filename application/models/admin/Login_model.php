@@ -18,4 +18,17 @@ class Login_model extends CI_Model {
         return $user_detail;
     }
 
+    /**
+     * @uses : this function is used to reset password
+     * @param : @email,@password 
+     * @author : HDA
+     */
+    public function reset_password($id, $password) {
+        $this->db->set('password',$password);
+        $this->db->where('id', $id);
+        $resut = $this->db->update('users');
+        return $resut;
+    }
+
+
 }
