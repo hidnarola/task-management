@@ -32,7 +32,7 @@
 	<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/plugins/pickers/daterangepicker.js"></script>
 
 	<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/core/app.js"></script>
-	<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/pages/dashboard.js"></script>
+	
 	<!-- /theme JS files -->
 
 </head>
@@ -91,8 +91,8 @@
 							<ul class="navigation navigation-main navigation-accordion">
 								<!-- Main -->
 								<li class="navigation-header"><span>Main</span> <i class="icon-menu" title="Main pages"></i></li>
-								<li class="active"><a href="#"><i class="icon-home4"></i> <span>Dashboard</span></a></li>
-                                <li><a href="#"><i class="icon-home4"></i> <span>Manage Users</span></a></li>
+								<li <?php if($this->uri->segment(2)=="dashboard"){echo 'class="active"';}?> ><a href="dashboard"><i class="icon-home4"></i> <span>Dashboard</span></a></li>
+                                <li <?php if($this->uri->segment(2)=="users"){echo 'class="active"';}?> ><a href="users"><i class="icon-home4"></i> <span>Manage Users</span></a></li>
 								
 								<!-- /page kits -->
 
@@ -108,20 +108,3 @@
 
 			<!-- Main content -->
 			<div class="content-wrapper">
-
-				<!-- Page header -->
-				<div class="page-header page-header-default">
-					<div class="page-header-content">
-						<div class="page-title">
-							<h4><i class="icon-arrow-left52 position-left"></i> <span class="text-semibold">Home</span> - Dashboard</h4>
-						</div>
-					</div>
-
-					<div class="breadcrumb-line">
-						<ul class="breadcrumb">
-							<li><a href="index.html"><i class="icon-home2 position-left"></i> Home</a></li>
-							<li class="active">Dashboard</li>
-						</ul>
-					</div>
-				</div>
-				<!-- /page header -->
