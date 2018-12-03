@@ -5,6 +5,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title><?php echo $title; ?></title>
+	<base href="<?php echo base_url(); ?>">
 
 	<!-- Global stylesheets -->
 	<link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css">
@@ -91,8 +92,8 @@
 							<ul class="navigation navigation-main navigation-accordion">
 								<!-- Main -->
 								<li class="navigation-header"><span>Main</span> <i class="icon-menu" title="Main pages"></i></li>
-								<li <?php if($this->uri->segment(2)=="dashboard"){echo 'class="active"';}?> ><a href="dashboard"><i class="icon-home4"></i> <span>Dashboard</span></a></li>
-                                <li <?php if($this->uri->segment(2)=="users"){echo 'class="active"';}?> ><a href="users"><i class="icon-home4"></i> <span>Manage Users</span></a></li>
+								<li <?php if($this->uri->segment(2)=="dashboard"){echo 'class="active"';}?> ><a href="admin/dashboard"><i class="icon-home4"></i> <span>Dashboard</span></a></li>
+                                <li <?php if($this->uri->segment(2)=="users"){echo 'class="active"';}?> ><a href="admin/users"><i class="icon-home4"></i> <span>Manage Users</span></a></li>
 								
 								<!-- /page kits -->
 

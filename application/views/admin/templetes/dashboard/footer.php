@@ -1,19 +1,18 @@
-<!-- Footer -->
-<div class="footer text-muted">
-						&copy; 2015. <a href="#">Limitless Web App Kit</a> by <a href="http://themeforest.net/user/Kopyov" target="_blank">Eugene Kopyov</a>
-					</div>
-					<!-- /footer -->
+	<!-- Footer -->
+    <div class="footer text-muted text-center">
+                © 2018. <a href="#">Task Management</a> by <a href="https://facebook.com/hiren.danecha" target="_blank">HDA</a>
+            </div>
+            <!-- /footer -->
 
-				</div>
-				<!-- /content area -->
+        </div>
+        <!-- /content area -->
 
-			</div>
-			<!-- /main content -->
+    </div>
+    <!-- /main content -->
 
-		</div>
-		<!-- /page content -->
-
-	</div>
+</div>
+<!-- /page content -->
+    </div>
 	<!-- /page container -->
 
 </body>
