@@ -12,7 +12,7 @@ class Users extends CI_Controller {
 		//$data['users'] = $this->users_model->list_users();
 		$data['title'] = "Manage Users";
 		$this->load->view('admin/templetes/dashboard/header',$data);
-		$this->load->view('admin/users');
+		$this->load->view('admin/users/users');
 		$this->load->view('admin/templetes/dashboard/footer');
 	}
 	
@@ -46,7 +46,8 @@ class Users extends CI_Controller {
 				'first_name' => $this->input->post('first_name'),
 				'last_name' => $this->input->post('last_name'),
 				'email' => $this->input->post('email'),
-				'phone' => $this->input->post('phone'),				
+				'phone' => $this->input->post('phone'),
+				'user_role' => "1"
 			);
 			$result = $this->users_model->add_new_user($user_detail);
 			$user_detail['password'] = $password;
@@ -66,14 +67,14 @@ class Users extends CI_Controller {
 			$message = $this->load->view('admin/templetes/emails/login_details',$user_detail,true);
 			$this->email->message($message);
 			if($this->email->send()){
-				$this->session->set_flashdata('success_msg', 'User has been added successfully!. Ask User to check email.');
+				$this->session->set_flashdata('success_msg', 'User has been added successfully!. Ask User to check email.');				
 			}else{
 				echo "failed!!";die;
 			}			
 		}
 		$data['title'] = "Add New User";
 		$this->load->view('admin/templetes/dashboard/header',$data);
-		$this->load->view('admin/add_user');
+		$this->load->view('admin/users/add_user');
 		$this->load->view('admin/templetes/dashboard/footer');
 	}
 	
@@ -92,7 +93,6 @@ class Users extends CI_Controller {
 		if ($strength & 8) {
 			$consonants .= '@#$%';
 		}
-	 
 		$password = '';
 		$alt = time() % 2;
 		for ($i = 0; $i < $length; $i++) {
@@ -106,5 +106,38 @@ class Users extends CI_Controller {
 		}
 		return $password;
 	}
+
+	public function edit($id=''){
+		$this->form_validation->set_rules('username', 'Username', 'trim|required');
+		$this->form_validation->set_rules('first_name', 'First Name', 'trim|required');
+		$this->form_validation->set_rules('last_name', 'First Name', 'trim|required');
+		$this->form_validation->set_rules('email', 'Email', 'trim|valid_email|required');
+		$this->form_validation->set_rules('phone', 'Phone', 'trim|required');
+
+		if ($this->form_validation->run() == TRUE){
+			$result = $this->users_model->edit_user(base64_decode($id));
+			$this->session->set_flashdata('success_msg', 'User has been updated successfully!');
+			redirect('admin/users');
+		}
+		$data['user'] = $this->users_model->get_user(base64_decode($id))->row_array();
+		$data['title'] = "Edit User";
+		$this->load->view('admin/templetes/dashboard/header',$data);
+		$this->load->view('admin/users/edit_user');
+		$this->load->view('admin/templetes/dashboard/footer');
+	}
+
+	public function delete($id=''){
+		$result = $this->users_model->delete_user(base64_decode($id));
+		$this->session->set_flashdata('success_msg', 'User has been deleted successfully!');
+		redirect('admin/users');
+	}
+
+	public function view($id=''){
+		$data['user'] = $this->users_model->get_user(base64_decode($id))->row_array();
+		$data['title'] = "View User";
+		$this->load->view('admin/templetes/dashboard/header',$data);
+		$this->load->view('admin/users/view_user');
+		$this->load->view('admin/templetes/dashboard/footer');	}
+
 }
 

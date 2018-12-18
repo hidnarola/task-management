@@ -49,9 +49,6 @@ $(document).ready(function () {
 			}		
 		},
 		validClass: "validation-valid-label",
-		success: function(label) {
-			label.addClass("validation-valid-label").text("Successfully")
-		},
 		rules: {
 			username: {
 				required: true

@@ -24,6 +24,12 @@
 </div>
 <!-- /page header -->
 <div class="content">
+<?php if ($this->session->flashdata('success_msg')) { ?>
+<div class="alert alert-success alert-styled-left alert-arrow-left alert-bordered">
+	<button type="button" class="close" data-dismiss="alert"><span>&times;</span><span class="sr-only">Close</span></button>
+	<?php echo $this->session->flashdata('success_msg'); ?>
+</div>
+<?php } ?>
 <!-- Ajax sourced dat	a -->
 <div class="panel panel-flat">
 	<table class="table datatable-basic">

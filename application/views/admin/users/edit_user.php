@@ -4,14 +4,14 @@
 <div class="page-header page-header-default">
 	<div class="page-header-content">
 		<div class="page-title">
-			<h4><i class="icon-arrow-left52 position-left"></i> <span class="text-semibold">Home</span> - Add New User</h4>
+			<h4><i class="icon-arrow-left52 position-left"></i> <span class="text-semibold">Home</span> - Edit User</h4>
 		</div>
 	</div>
 
 	<div class="breadcrumb-line">
 		<ul class="breadcrumb">
 			<li><a href="dashboard"><i class="icon-home2 position-left"></i> Home</a></li>			
-            <li class="active">Add New User</li>
+            <li class="active">Edit User</li>
 		</ul>
 	</div>
 </div>
@@ -33,35 +33,35 @@
 									<div class="form-group">
 										<label class="control-label col-lg-3">User Name <span class="text-danger">*</span></label>
 										<div class="col-lg-9">
-											<input type="text" name="username" id="username" class="form-control" required="required" placeholder="E.g. hdanarola">
+											<input type="text" name="username" id="username" class="form-control" required="required" placeholder="E.g. hdanarola" value="<?php echo $user['username'] ?>">
 										</div>
 									</div>
                                     <div class="form-group">
 										<label class="control-label col-lg-3">First Name <span class="text-danger">*</span></label>
 										<div class="col-lg-9">
-											<input type="text" name="first_name" id="first_name" class="form-control" required="required" placeholder="John">
+											<input type="text" name="first_name" id="first_name" class="form-control" required="required" placeholder="John" value="<?php echo $user['first_name'] ?>" >
 										</div>
 									</div>
                                     <div class="form-group">
 										<label class="control-label col-lg-3">Last Name <span class="text-danger">*</span></label>
 										<div class="col-lg-9">
-											<input type="text" name="last_name" id="last_name" class="form-control" required="required" placeholder="Smith">
+											<input type="text" name="last_name" id="last_name" class="form-control" required="required" placeholder="Smith" value="<?php echo $user['last_name'] ?>" >
 										</div>
 									</div>
                                     <div class="form-group">
 										<label class="control-label col-lg-3">Email <span class="text-danger">*</span></label>
 										<div class="col-lg-9">
-											<input type="email" name="email" id="email" class="form-control" id="email" required="required" placeholder="Enter a valid email address">
+											<input type="email" name="email" id="email" class="form-control" id="email" required="required" placeholder="Enter a valid email address" value="<?php echo $user['email'] ?>" >
 										</div>
 									</div>
                                     <div class="form-group">
 										<label class="control-label col-lg-3">Phone No. <span class="text-danger">*</span></label>
 										<div class="col-lg-9">
-											<input type="text" name="phone" id="phone" class="form-control" required="required" placeholder="9898989898">
+											<input type="text" name="phone" id="phone" class="form-control" required="required" placeholder="9898989898" value="<?php echo $user['phone'] ?>" >
 										</div>
 									</div>
                                     <div class="text-right">
-                                        <button type="reset" class="btn btn-default" id="reset">Reset <i class="icon-reload-alt position-right"></i></button>
+                                        <button type="reset" class="btn btn-default" onclick="location.href='<?php echo base_url();?>admin/users'"> <i class="icon-arrow-left13 position-left"></i> Cancel</button>
                                         <button type="submit" class="btn btn-primary">Submit <i class="icon-arrow-right14 position-right"></i></button>
                                     </div>
                             </form>

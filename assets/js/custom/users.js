@@ -46,7 +46,7 @@ $(document).ready(function () {
                 data: "action",
                 visible: true,
                 render: function (data, type, full, meta) {
-					action = '<ul class="icons-list"><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-menu9"></i></a><ul class="dropdown-menu dropdown-menu-right"><li><a href="admin/user/edit"><i class="icon-file-pdf"></i> View</a></li><li><a href="#"><i class="icon-file-excel"></i>Edit</a></li><li><a href="#"><i class="icon-file-word"></i> Delete</a></li></ul></li></ul>';
+					action = '<ul class="icons-list"><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-menu9"></i></a><ul class="dropdown-menu dropdown-menu-right"><li><a href="admin/users/edit/'+ btoa(full.id) +'"><i class="icon-pencil7"></i>Edit</a></li><li><a href="admin/users/delete/'+ btoa(full.id) +'"><i class="icon-bin"></i>Delete</a></li><li><a href="admin/users/view/'+ btoa(full.id) +'"><i class="icon-eye8"></i>View</a></li></ul></li></ul>';
                     return action;
                 },
                 sortable: false,
